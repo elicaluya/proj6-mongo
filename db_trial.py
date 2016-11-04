@@ -14,12 +14,8 @@ import sys
 import secrets.admin_secrets
 import secrets.client_secrets
 
-MONGO_CLIENT_URL = "mongodb://{}:{}@{}:{}/{}".format(
-    secrets.client_secrets.db_user,
-    secrets.client_secrets.db_user_pw,
-    secrets.admin_secrets.host, 
-    secrets.admin_secrets.port, 
-    secrets.client_secrets.db)
+MONGO_CLIENT_URL = "mongodb://localhost:{}/".format(
+    secrets.admin_secrets.port)
 
 try: 
     dbclient = MongoClient(MONGO_CLIENT_URL)
@@ -42,13 +38,15 @@ record = { "type": "dated_memo",
            "date":  arrow.utcnow().naive,
            "text": "This is a sample memo"
           }
-collection.insert(record)
+post_id = collection.insert_one(record).inserted_id
+
 
 record = { "type": "dated_memo", 
            "date":  arrow.utcnow().replace(days=+1).naive,
            "text": "Sample one day later"
           }
-collection.insert(record)
+post_id = collection.insert_one(record).inserted_id
+
 
 #
 # Read database --- May be useful to see what is in there,

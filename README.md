@@ -1,33 +1,31 @@
 # proj6-mongo
 Simple list of dated memos kept in MongoDB database
+Author: Elijah Caluya
 
-## What is here
+## What the repository started with
 
 A simple Flask app that displays all the dated memos it finds in a MongoDB database.
 There is also a 'scaffolding' program, db_trial.py, for inserting a couple records into the database 
-and printing them out.  Get db_trial.py working before you try making your flask app work. 
+and printing them out.  
 
-## What is not here
+## Assignment
 
-In addition to the missing functionality in the application, you will
-need a MongoDB database, and you will need credentials (user name and
-password) both for an administrative user and a regular user.  The
-administrative user may be you, but the regular user is your
-application. Make a subdirectory called "secrets" and place two files
-in it: 
+For the database, I needed to create an admin account with my own password and username.
+For any of the other clients who want to use the database, I created a file that contains 
+the needed information for a user that I created the username and password for.
 
-- secrets/admin_secrets.py holds configuration information for your MongoDB
+- secrets/admin_secrets.py holds configuration information for my MongoDB
   database, including the administrative password.  
-= secrets/client_secrets.py holds configuration information for your
+= secrets/client_secrets.py holds configuration information for my
   application. 
 
 
 
-## Functionality you'll add
+## Functionality added
 
-The user should be able to add dated memos, either from the same index page or from a separate page. 
-Memos should be displayed in date order. 
-The user should be able to delete memos. 
+The user is able to create memos from the entry fields at the bottom of the page.
+The memos are then presented in date order and the user is able to delete the selected
+memos.
 
 ## Setting up
 

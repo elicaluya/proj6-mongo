@@ -37,12 +37,13 @@
 {% endwith %}
 
 <h1>Memos</h1>
-
+<form action = "/delete" method = "get">
 {% if g.memos %}
     {% for memo in g.memos %}
   <div class="memo">
   <div class="row">
   <div class="col-md-2">
+  <input type = "checkbox" id = "check" name = "check" value="{{memo.text}}">
     {{ memo.date | humanize }}
   </div>
   <div class="col-md-10">
@@ -55,7 +56,36 @@
   <p>No memos for you. </p>  
 {% endif %}
 
- 
+
+<br>
+<input type = "submit" value = "Delete Selected"/>
+<br>
+</form>
+
+<h2>Create a Memo</h2>
+<form action = "/add" method = "get">
+Enter the date: <br>
+<input type = "date" id = "date" name = "date"/>
+<br>
+Enter the memo: <br>
+<input type = "text" id = "memo" name = "memo" style = "width: 700px;" />
+<br>
+<input type="submit" value="Save Memo" />
+<br>
+</form>
+
+
+
+<script>
+$(document).ready(function(){
+	$("form").submit(function(){
+	var date = $('#date').val();
+	var memo = $('#memo').val();
+	var check = $('#check').val();
+	});
+});
+
+</script>
 
 </div> <!-- container -->
 </body>
